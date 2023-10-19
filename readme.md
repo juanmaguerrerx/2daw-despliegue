@@ -1,6 +1,6 @@
 # Tema 0
 
-| Ejercicios | Descripcion |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+ Ejercicios | Descripcion 
+ ------------- | ------------- 
+ Content Cell  | Content Cell  
+ Content Cell  | Content Cell  
