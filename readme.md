@@ -2,5 +2,4 @@
 
  Ejercicios | Descripcion 
  ------------- | ------------- 
- Activity 2  | [Activity 2](T1/t1-a2.md)  
-   |   
+ Activity 2  | [Activity 2](T1/t1-a2.md)    
