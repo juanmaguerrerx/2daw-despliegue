@@ -1,4 +1,4 @@
-# Tema 1
+# [Tema 1](/T1)
 
  Ejercicios | Descripcion 
  ------------- | ------------- 
