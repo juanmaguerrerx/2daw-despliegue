@@ -2,5 +2,5 @@
 
  Ejercicios | Descripcion 
  ------------- | ------------- 
- Content Cell  | Content Cell  
+ Activity 2  | [Activity 2](t1-a2)  
  Content Cell  | Content Cell  
