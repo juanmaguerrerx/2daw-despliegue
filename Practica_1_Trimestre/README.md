@@ -61,10 +61,30 @@ sudo mkdir /var/www/departamentos.centro.intranet
 ```
 
 ### Habilitar el módulo PHP
-Instalamos el módulo PHP en para Apache:
+Instalamos el módulo PHP en Apache:
 ```linux
 sudo apt install libapache2-mod-php
 ```
 ```linux
-sudo a2enmod php
+sudo a2enmod php8.2(version que tengamos 'php -v')
 ```
+![imagen1](./images/1.png)
+
+### Habilitar el módulo MySql
+Para habilitar el módulo MySql en PHP, haremos lo siguiente:
+```linux
+sudo apt install php-mysql
+```
+```linux
+sudo systemctl restart apache2
+```
+Ahora, para comprobar que la integración de PHP ha sido exitosa, crearemos un archivo _info.php_ en _/var/www/centro.intranet/_
+```linux
+sudo nano /var/www/centro.intranet/info.php
+```
+```php
+<?php
+phpinfo();
+?>
+```
+![imagen2](./images/2.png)
