@@ -133,3 +133,72 @@ sudo mv wordpress /var/www/centro.intranet/
 Listo, ahora haremos unos ajustes para sacar el contenido de la carpeta wordpress y dejarla en centro.intranet.
 
 ![imagen9](./images/9.png)
+
+Ahora debemos cambiar los permisos para que no surjan problemas durante la instalación.
+
+```linux
+sudo chown -R www-data:www-data /var/www/centro.intranet
+```
+
+Ahora accedemos a _http://centro.intranet_ y nos saldrá la instalación de WordPress.
+![imagen10](./images/10.png)
+
+### Instalar y activar Python
+
+Para instalar pyhton, hay que instalar el módulo wsgi que se llevaría a cabo con el siguiente comando:
+
+```linux
+sudo apt install libapache2-mod-wsgi-py3
+```
+![imagen11](./images/11.png)
+
+Activamos y reiniciamos apache.
+
+```linux
+sudo a2enmod wsgi
+sudo service apache2 restart
+```
+
+
+### Crear una pequeña aplicación Python para comprobar y demostrar que funciona correctamente
+
+En la carpeta departamentos.centro.intranet crearemos un archivo con la ejecución de python. 
+```linux
+(en la carpeta /var/www/departamentos.centro.intratnet)
+sudo nano main.py
+```
+El codigo de mi programa sería algo así:
+```python
+print("Hola mundo!")
+
+for i in range(1,6):
+  print(f"Numero: {i}")
+```
+
+Ahora crearemos un archivo _WSGI_ en el mismo directorio.
+
+```sudo nano main.wsgi```
+
+Y en él escribimos el siguiente codigo:
+```py
+import sys
+sys.path.insert(0, '/var/www/departamentos.centro.intranet')
+
+from app import application
+
+if __name__ == '__main__':
+    application.run()
+```
+
+Damos los permisos:
+```sudo chown -R www-data:www-data /var/www/departamentos.centro.intranet```
+
+Listo ahora al abrir _http://departamentos.centro.intranet/_ nos saldrá en la página la ejecución del programa python que hemos programado previamente.
+
+### Instala y configura AWSTATS
+
+Para comenzar, instalaremos _awstats_:
+```sudo apt install awstats```
+
+Nos dirigimos a la configuración del mismo.
+```sudo nano /etc/awstats/awstats.localhost.conf```
