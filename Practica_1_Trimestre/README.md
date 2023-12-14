@@ -128,3 +128,8 @@ Ahora para mover el archivo escribiremos:
 sudo mv wordpress /var/www/centro.intranet/ 
 ```
 ![imagen8](./images/8.png)
+
+
+Listo, ahora haremos unos ajustes para sacar el contenido de la carpeta wordpress y dejarla en centro.intranet.
+
+![imagen9](./images/9.png)
