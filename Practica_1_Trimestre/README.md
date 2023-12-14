@@ -95,3 +95,8 @@ Para ello, escribiremos lo siguiente:
 ```linux
 sudo apt install mysql-server
 ```
+Ahora vamos a entrar, escribiendo:
+```linux
+mysql -u root -p
+```
+![imagen4](./images/4.png)
