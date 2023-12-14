@@ -100,3 +100,11 @@ Ahora vamos a entrar, escribiendo:
 mysql -u root -p
 ```
 ![imagen4](./images/4.png)
+
+Crearemos una base de datos llamada _PracticaJ_ por ejemplo:
+
+```sql
+CREATE DATABASE PracticaJ
+```
+
+Y veremos si se ha creado con la línea ```SHOW DATABASES```
