@@ -202,3 +202,8 @@ Para comenzar, instalaremos _awstats_:
 
 Nos dirigimos a la configuración del mismo.
 ```sudo nano /etc/awstats/awstats.localhost.conf```
+![imagen13](./images/13.png)
+
+Ahora en el navegador nos dirigimos a: _http://127.0.0.1/cgi-bin/awstats.pl?config=localhost_ para acceder a las estadísticas
+
+![imagen14](./images/14.png)
