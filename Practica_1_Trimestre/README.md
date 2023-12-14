@@ -11,9 +11,7 @@ sudo apt get install apache2
 ### 2. CONFIGURAR VIRTUALHOSTS
 <a name="confVH"></a>
 En el archivo _hosts_, escribiremos los nuevos hosts correspondientes:
-Para acceder al archivo: ```
-sudo nano etc/hosts
-```
+Para acceder al archivo: ```sudo nano etc/hosts```
 ![imagen3](./images/3.png)
 
 Ahora nos dirigimos a la terminal de nuevo y creamos los archivos _centro.intranet.conf_ y _departamentos.centro.intranet.conf_
