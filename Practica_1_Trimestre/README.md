@@ -2,12 +2,17 @@
 ## Servidores Web
 
 ### 1. INSTALACION APACHE
+<a name="instAp"></a>
 Primero, instalamos apache con el comando:
 ```linux
 sudo apt get install apache2
 ```
 
 ### 2. CONFIGURAR VIRTUALHOSTS
+<a name="confVH"></a>
+En el archivo _hosts_, escribiremos los nuevos hosts correspondientes:
+![imagen3](./images/3.png)
+
 Ahora nos dirigimos a la terminal de nuevo y creamos los archivos _centro.intranet.conf_ y _departamentos.centro.intranet.conf_
 en el fichero _sites-availables_:
 ```linux
@@ -53,6 +58,7 @@ Y se nos abrirá el editor donde deberemos escribir lo siguiente:
 ```
 
 ### Crear directorios
+<a name="crearDir"></a>
 Crearemos los directorios correspondientes a cada uno de los sitios en _var/www/_
 
 ```linux
@@ -61,6 +67,7 @@ sudo mkdir /var/www/departamentos.centro.intranet
 ```
 
 ### Habilitar el módulo PHP
+<a name="habPhp"></a>
 Instalamos el módulo PHP en Apache:
 ```linux
 sudo apt install libapache2-mod-php
@@ -71,6 +78,7 @@ sudo a2enmod php8.2(version que tengamos 'php -v')
 ![imagen1](./images/1.png)
 
 ### Habilitar el módulo MySql
+<a name="habMSQL"></a>
 Para habilitar el módulo MySql en PHP, haremos lo siguiente:
 ```linux
 sudo apt install php-mysql
@@ -78,13 +86,11 @@ sudo apt install php-mysql
 ```linux
 sudo systemctl restart apache2
 ```
-Ahora, para comprobar que la integración de PHP ha sido exitosa, crearemos un archivo _info.php_ en _/var/www/centro.intranet/_
+
+### Activar MySql
+<a name="activMSQL"></a>
+Para ello, escribiremos lo siguiente:
+
 ```linux
-sudo nano /var/www/centro.intranet/info.php
+sudo apt install mysql-server
 ```
-```php
-<?php
-phpinfo();
-?>
-```
-![imagen2](./images/2.png)
