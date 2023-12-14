@@ -109,3 +109,5 @@ CREATE DATABASE PracticaJ
 
 Y veremos si se ha creado con la línea ```SHOW DATABASES```
 ![imagen5](./images/5.png)
+
+
