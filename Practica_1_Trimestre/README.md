@@ -51,3 +51,20 @@ Y se nos abrirá el editor donde deberemos escribir lo siguiente:
     CustomLog ${APACHE_LOG_DIR}/departamentos.centro.intranet_access.log combined
 </VirtualHost>
 ```
+
+### Crear directorios
+Crearemos los directorios correspondientes a cada uno de los sitios en _var/www/_
+
+```linux
+sudo mkdir /var/www/centro.intranet
+sudo mkdir /var/www/departamentos.centro.intranet
+```
+
+### Habilitar el módulo PHP
+Instalamos el módulo PHP en para Apache:
+```linux
+sudo apt install libapache2-mod-php
+```
+```linux
+sudo a2enmod php
+```
