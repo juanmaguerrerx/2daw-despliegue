@@ -111,3 +111,20 @@ Y veremos si se ha creado con la línea ```SHOW DATABASES```
 ![imagen5](./images/5.png)
 
 
+### Instalar y activar WordPress
+
+Descargaremos WordPress desde el sitio web oficial y descomprimiremos el archivo en _centro.intranet_, la página a la que queremos aplicar WordPress. 
+![imagen6](./images/6.png)
+Como podemos ver, el archivo está en la carpeta _Downloads_, para moverlo haremos lo siguiente:
+
+Primero descomprimimos el archivo:
+```linux
+sudo unzip wordpress-6.4.2-es_ES.zip
+```
+![imagen7](./images/7.png)
+Ahora para mover el archivo escribiremos:
+
+```linux
+sudo mv wordpress /var/www/centro.intranet/ 
+```
+![imagen8](./images/8.png)
