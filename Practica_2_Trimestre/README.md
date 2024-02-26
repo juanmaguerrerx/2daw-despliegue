@@ -23,3 +23,6 @@ sudo apt install apache2
 
 Para verificar que se ha instalado correctamente podemos hacer un *status*:
 
+```bash
+sudo systemctl status apache2
+```
