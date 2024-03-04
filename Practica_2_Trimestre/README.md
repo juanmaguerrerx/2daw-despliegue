@@ -26,3 +26,12 @@ Para verificar que se ha instalado correctamente podemos hacer un *status*:
 ```bash
 sudo systemctl status apache2
 ```
+
+<sub>He tenido que cambiar el entorno por motivos de errores de Kali a Ubuntu</sub>
+
+![Imagen 3](/Practica_2_Trimestre/images/3.png)
+
+Podemos ver que la instalación ha ido correctamente al entrar en *http://localhost*
+
+![Imagen 4](/Practica_2_Trimestre/images/4.png)
+
