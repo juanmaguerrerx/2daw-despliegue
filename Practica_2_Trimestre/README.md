@@ -196,3 +196,31 @@ Por último reiniciamos el servicio:
 sudo systemctl restart vsftpd
 ```
 
+## Instalación SSH y FTP 
+
+Para instalar OpenSSH, ejecutamos:
+
+```bash
+sudo apt install openssh-server
+```
+
+Ahora activaremos el puerto 22 que es el que tiene por defecto, solo hay que eliminar el comentario del archivo.
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+Eliminamos el *#* de la línea marcada.
+![Imagen 16](/Practica_2_Trimestre/images/16.png)
+
+Ahora, reinicamos el servicio:
+
+```bash
+sudo systemctl restart ssh
+```
+Y comprobamos el estado:
+```bash
+sudo systemctl status ssh
+```
+
+![Imagen 17](/Practica_2_Trimestre/images/17.png)
+
