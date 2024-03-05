@@ -1,9 +1,9 @@
-# Proyecto 2 Trimestre
-**[Link al enunciado](https://docs.google.com/document/d/1wLt42AF9oQq4WcSOMjifCIYTC64uAV0Erm6mUt9H6bA/edit)**
+# **Proyecto 2 Trimestre**
+**_[Link al enunciado](https://docs.google.com/document/d/1wLt42AF9oQq4WcSOMjifCIYTC64uAV0Erm6mUt9H6bA/edit)_**
 
-## Servidor de alojamiento web 
+# Servidor de alojamiento web 
 
-### Instalación Apache en Ubuntu
+## Instalación Apache en Ubuntu
 
 Primero, para poder alojar páginas web estáticas y dinámicas, usaremos Apache2 para Ubuntu. Para instalarlo, desde la terminal ejecutamos los siguientes comandos:
 
@@ -36,7 +36,7 @@ Podemos ver que la instalación ha ido correctamente al entrar en *http://localh
 ![Imagen 4](/Practica_2_Trimestre/images/4.png)
 
 
-### Instalación PHP
+## Instalación PHP
 
 Para instalar PHP y los módulos necesarios para alojar páginas web ejecutaremos comando:
 
@@ -60,7 +60,7 @@ Ahora debemos reiniciar Apache para aplicar los cambios efectuados:
 sudo systemctl restart apache2
 ```
 
-### Directorio de usuario con una página web por defecto
+## Directorio de usuario con una página web por defecto
 
 Creamos un fichero con el editor de texto de nuestra preferencia (Vin, Nano, etc.) y tendremos que ajustarlo de la siguiente manera:
 
@@ -99,7 +99,63 @@ sudo echo "<html><body><h2>Hola, $username. Bienvenido a $sitename!</h2></body><
 El archivo completo:
 ![Imagen 8](/Practica_2_Trimestre/images/8.png)
 
+## Instalación SQL
 
+Instalamos SQL _(MySQL)_ con el siguiente comando:
+
+```bash
+sudo apt install mysql-server
+```
+
+![Imagen 9](/Practica_2_Trimestre/images/9.png)
+
+
+Luego iniciaremos mysql:
+
+```bash
+sudo sysyemctl start mysql
+```
+Para asegurarnos de que ha sido iniciado, preguntaremos por el estado:
+```bash
+sudo systemctl status mysql
+```
+
+![Imagen 10](/Practica_2_Trimestre/images/10.png)
+
+
+## Instalación PHPMyAdmin
+
+Como venimos haciendo anteriormente, instalamos con el comando:
+
+<sub>Recuerda tener actualizado el sistema: ```sudo apt update```</sub>
+```bash
+sudo apt install phpmyadmin
+```
+
+Cuando nos salga esta ventana:
+
+![Imagen 11](/Practica_2_Trimestre/images/11.png)
+
+Seleccionamos Apache2 ya que es el servicio que vamos a utilizar con PHPMyAdmin
+
+Ahora nos dice que *phpmyadmin* necesita tener al menos una BBDD creada antes de funcionar para un funcionamiento correcto, que si queremos que nos cree una por defecto. Le diremos que si:
+
+![Imagen 12](/Practica_2_Trimestre/images/12.png)
+
+Y por último nos pedirá una contraseña:
+
+![Imagen 13](/Practica_2_Trimestre/images/13.png)
+
+Una vez completada la instalación reiniciamos *apache2*.
+
+```bash
+sudo systemctl restart apache2
+```
+
+Una vez finalizado, para comprobar el correcto funcionamiento solo tendríamos que ir a *http://localhost/phpmyadmin* en el navegador e introducir las credenciales que hemos introducido anteriormente.
+
+
+## Instalacion FTP certificado TLS 
 
 
 
