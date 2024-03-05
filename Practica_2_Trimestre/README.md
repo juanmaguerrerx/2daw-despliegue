@@ -157,5 +157,32 @@ Una vez finalizado, para comprobar el correcto funcionamiento solo tendríamos q
 
 ## Instalacion FTP certificado TLS 
 
+De la misma manera que en las anteriores ocasiones, instalamos con el mismo comando:
 
+```bash
+sudo apt install vsftpd
+```
+
+Para hacer un certificado TLS usaremos un comando que nos generara un cartificado autofirmado:
+
+```bash
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
+```
+
+![Imagen 14](/Practica_2_Trimestre/images/14.png)
+
+Una vez hecho, tenemos que ajustar la configuración del servidor para permitir que los clientes puedan conectarse:
+
+```bash
+sudo nano /etc/vsftpd.conf
+```
+
+Y al final del documento ponemos estas líneas:
+
+![Imagen 15](/Practica_2_Trimestre/images/15.png)
+
+Por último reiniciamos el servicio:
+```bash
+sudo systemctl restart vsftpd
+```
 
