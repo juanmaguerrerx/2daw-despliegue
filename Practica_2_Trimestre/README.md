@@ -3,6 +3,16 @@
 
 # Servidor de alojamiento web 
 
+### Índice
+
+- [Instalación Apache](#instalación-apache-en-ubuntu)
+- [Instalación PHP](#instalación-php)
+- [Directorio de usuario con página web](#directorio-de-usuario-con-una-página-web-por-defecto)
+- [Instalación SQL](#instalación-sql)
+- [Instalación PHPMyAdmin](#instalación-phpmyadmin)
+- [Instalación FTP con certificado TLS](#instalacion-ftp-certificado-tls)
+- []()
+
 ## Instalación Apache en Ubuntu
 
 Primero, para poder alojar páginas web estáticas y dinámicas, usaremos Apache2 para Ubuntu. Para instalarlo, desde la terminal ejecutamos los siguientes comandos:
