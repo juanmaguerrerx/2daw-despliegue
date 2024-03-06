@@ -12,6 +12,8 @@
 - [Instalación PHPMyAdmin](#instalación-phpmyadmin)
 - [Instalación FTP con certificado TLS](#instalacion-ftp-certificado-tls)
 - [Instalación SSH y FTP ](#instalación-ssh-y-ftp)
+- [Instalación Módulo Python](#módulo-python)
+- ### [Script](#script-1)
 
 ## Instalación Apache en Ubuntu
 
@@ -239,3 +241,71 @@ Y reiniciamos apache:
 sudo systemctl restart apache2
 ```
 ![Imagen 19](/Practica_2_Trimestre/images/19.png)
+
+
+
+## Módulo Python
+
+Para que nuestro servidor soporte aplicaciones en Python necesitamos importar su módulo:
+
+```bash
+sudo apt install libapache2-mod-wsgi-py3
+```
+
+Lo pasamos a los módulos activos y reiniciamos Apache
+
+```bash
+sudo a2enmod wsgi
+```
+```bash
+sudo systemctl restart apache2
+```
+
+![Imagen 20](/Practica_2_Trimestre/images/20.png)
+![Imagen 21](/Practica_2_Trimestre/images/21.png)
+
+
+# Script
+
+## Funciones
+
+A modo de documentación del Script, explicaré las funciones creadas para el Script:
+
+- [get_unique_user()](#get_unique_user)
+- [get_unique_site()](#get_unique_site)
+- [create_user_and_site()](#create_user_and_site)
+- [create_virtual_host_config()](#create_virtual_host_config)
+- [create_mysql_user_and_database()](#create_mysql_user_and_database)
+- [config_dns()](#config_dns)
+
+
+
+## Explicación de Funciones
+
+### `get_unique_user()`
+
+Esta función se encarga de obtener un nombre de usuario único. Primero solicita al usuario que ingrese un nombre de usuario. Luego, verifica si ese nombre de usuario ya existe en el sistema. Si el nombre de usuario ya existe, solicita al usuario que ingrese otro nombre hasta que se proporcione uno único. Finalmente, devuelve el nombre de usuario único.
+
+### `get_unique_site()`
+
+Similar a `get_unique_user()`, esta función solicita al usuario que ingrese un nombre para un sitio web. Luego, verifica si ya existe un directorio para ese nombre de sitio web en `/var/www`. Si el nombre del directorio ya existe, solicita al usuario que ingrese otro nombre hasta que se proporcione uno único. Finalmente, devuelve el nombre único del sitio web.
+
+### `create_user_and_site()`
+
+Esta función crea un nuevo usuario en el sistema y un directorio para el sitio web en `/var/www`. Toma dos argumentos: el nombre de usuario y el nombre del sitio web. Utiliza los comandos `useradd` para crear el usuario y `mkdir` para crear el directorio del sitio web. Luego, establece el propietario y los permisos del directorio y crea un archivo `index.html` básico dentro de él.
+
+### `create_virtual_host_config()`
+
+Esta función crea y configura un archivo de host virtual para Apache. Toma dos argumentos: el nombre de usuario y el nombre del sitio web. Genera la configuración del host virtual con los parámetros proporcionados y la guarda en el directorio `sites-available` de Apache. Este archivo de configuración especifica la configuración del servidor virtual para el sitio web, como el nombre del servidor, el alias, la ruta del documento raíz y los registros de errores.
+
+### `create_mysql_user_and_database()`
+
+Esta función crea un nuevo usuario y una base de datos MySQL. Toma dos argumentos: el nombre de usuario y el nombre del sitio web. Primero, solicita al usuario la contraseña del usuario root de MySQL. Luego, verifica si la base de datos ya existe. Si la base de datos no existe, crea la base de datos y el usuario correspondiente, otorga todos los privilegios sobre la base de datos al usuario y actualiza los privilegios de MySQL.
+
+### `config_dns()`
+
+Esta función configura el servicio DNS para el sitio web. Toma dos argumentos: el nombre del sitio web y la dirección IP. Agrega una zona al archivo `named.conf.local` especificando el nombre del sitio web y el archivo de zona asociado. Luego, crea el archivo de zona correspondiente en `/etc/bind` con registros de resolución directa e inversa y reinicia el servicio BIND para aplicar los cambios.
+
+
+
+
