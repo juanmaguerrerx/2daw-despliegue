@@ -1,26 +1,26 @@
 #!/bin/bash
 # Función para obtener un nombre de usuario único
-get_unique_user() {
+get_unique_username() {
     local usrname
-    read -rp "Por favor, ingrese un nombre de usuario:" usrname
+    read -rp "Ingrese un nombre de usuario único:" usrname
     while id "${usrname}" &>/dev/null; do
-        read -rp "El usuario ${usrname} ya existe. Por favor, ingrese otro:" usrname
+        read -rp "El nombre de usuario '${usrname}' ya existe. Por favor, ingrese otro:" usrname
     done
     echo "${usrname}"
 }
 
 # Función para obtener un nombre de sitio web único
-get_unique_site() {
+get_unique_sitename() {
     local sitename
-    read -rp "Por favor, ingrese un nombre para el sitio web:" sitename
+    read -rp "Ingrese un nombre único para el sitio web:" sitename
     while [ -d "/var/www/${sitename}" ]; do
-        read -rp "El directorio para /var/www/${sitename} ya existe. Por favor, ingrese otro nombre:"  sitename
+        read -rp "El directorio '/var/www/${sitename}' ya existe. Por favor, ingrese otro nombre:"  sitename
     done
     echo "${sitename}"
 }
 
 # Función para crear usuario y directorio del sitio web
-create_user_and_site() {
+create_user_and_sitename() {
     local usrname=${1}
     local sitename=${2}
 
@@ -29,7 +29,7 @@ create_user_and_site() {
     sudo chown "${usrname}":"${usrname}" /var/www/"${sitename}"
     sudo chmod 755 /var/www/"${sitename}"
     echo "<html><body><h1>Bienvenido a ${sitename}!</h1></body></html>" | sudo tee /var/www/"${sitename}"/index.html > /dev/null
-    echo "Usuario ${usrname} creado. Directorio de alojamiento web: /var/www/${sitename}"
+    echo "El usuario '${usrname}' ha sido creado. Directorio de alojamiento web: /var/www/${sitename}"
 }
 
 # Función para crear la configuración del host virtual
@@ -42,7 +42,7 @@ create_virtual_host_config() {
 
     local temp_conf="/tmp/$sitename.conf"
 
-    printf "Creando y configurando archivo de Host Virtual"
+    printf "Creando y configurando archivo de Host Virtual..."
     echo "<VirtualHost *:80>
         ServerAdmin admin@example.com
         ServerName ${sitename}.com
@@ -52,10 +52,10 @@ create_virtual_host_config() {
         CustomLog ${APACHE_LOG_DIR}/${sitename_access}.log combined
     </VirtualHost>" > "${temp_conf}"
 
-    printf "Moviendo configuración a Apache sites-available \n"
+    printf "Moviendo configuración al directorio 'sites-available' de Apache... \n"
     sudo mv "${temp_conf}" /etc/apache2/sites-available/"${sitename}".conf
 
-    echo "Configuración del Host Virtual para ${sitename} creada en /etc/apache2/sites-available/${sitename}.conf"
+    echo "Configuración del Host Virtual para '${sitename}' ha sido creada en /etc/apache2/sites-available/${sitename}.conf"
 }
 
 # Función para crear usuario y base de datos MySQL
@@ -65,13 +65,13 @@ create_mysql_user_and_database() {
     local dbname="${sitename}_db"
     local passwordroot
 
-    read -rp "Por favor, ingrese la contraseña del root: " passwordroot
+    read -rp "Por favor, ingrese la contraseña del usuario root de MySQL: " passwordroot
 
-    printf "Creando Base de Datos y Usuario MySQL\n"
+    printf "Creando Base de Datos y Usuario MySQL...\n"
 
     printf "Creando base de datos y usuario...\n"
 
-    read -rp "Ingrese una contraseña para el usuario '$usrname' de MySQL: " password
+    read -rp "Ingrese una contraseña para el usuario '${usrname}' de MySQL: " password
 
      mysql -u root -p"${passwordroot}" <<EOF
     # Verificar si la base de datos ya existe
@@ -89,7 +89,7 @@ EOF
         GRANT ALL PRIVILEGES ON ${dbname}.* TO '${usrname}'@'localhost';
         FLUSH PRIVILEGES;
 EOF
-        echo "Base de datos '${dbname}' y usuario '${usrname}' creados."
+        echo "Base de datos '${dbname}' y usuario '${usrname}' han sido creados."
     fi
 }
 
@@ -98,13 +98,13 @@ config_dns() {
     local sitename="${1}"
     local ip="${2}"
 
-    printf "Añadiendo zona al archivo named.conf.local...\n"
+    printf "Añadiendo zona al archivo 'named.conf.local'...\n"
     echo "zone \"${sitename}\" {
         type master;
         file \"/etc/bind/db.${sitename}\";
     };" | sudo tee -a /etc/bind/named.conf.local > /dev/null
 
-    printf "Creando archivo de zona /etc/bind/db.%s...\n" "${sitename}"
+    printf "Creando archivo de zona '/etc/bind/db.%s'...\n" "${sitename}"
     sudo cp /etc/bind/db.empty /etc/bind/db."${sitename}"
     sudo chown bind:bind /etc/bind/db."${sitename}"
 
@@ -126,13 +126,13 @@ ${ip}       IN      PTR     ${sitename}." | sudo tee -a /etc/bind/db."${sitename
     printf "Reiniciando servicio BIND...\n"
     sudo systemctl restart bind9
 
-    printf "Configuración DNS para %s completada.\n" "${sitename}"
+    printf "Configuración DNS para '%s' completada.\n" "${sitename}"
 }
 
-username=$(get_unique_user)
-sitename=$(get_unique_site)
+username=$(get_unique_username)
+sitename=$(get_unique_sitename)
 
-create_user_and_site "${username}" "${sitename}"
+create_user_and_sitename "${username}" "${sitename}"
 printf "\n"
 
 create_virtual_host_config "${username}" "${sitename}"
@@ -141,7 +141,7 @@ printf "\n"
 create_mysql_user_and_database "${username}" "${sitename}"
 printf "\n"
 
-#!! Cambiar ip por la deseada !!
+#!! Cambiar ip !!
 config_dns "${sitename}" "192.168.1.136"
 printf "\n"
 
