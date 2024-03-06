@@ -278,7 +278,7 @@ A modo de documentación del Script, explicaré las funciones creadas para el Sc
 - [create_mysql_user_and_database()](#create_mysql_user_and_database)
 - [config_dns()](#config_dns)
 
-- *__[Acceder al Script](/Practica_2_Trimestre/script.sh)__*
+- ### __[Acceder al Script](/Practica_2_Trimestre/script.sh)__
 
 ## Explicación de Funciones
 
