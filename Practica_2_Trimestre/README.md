@@ -224,3 +224,18 @@ sudo systemctl status ssh
 
 ![Imagen 17](/Practica_2_Trimestre/images/17.png)
 
+
+### Instalamos BIND9
+
+```bash
+sudo apt install bind9
+```
+
+![Imagen 18](/Practica_2_Trimestre/images/18.png)
+
+Y reiniciamos apache:
+
+```bash
+sudo systemctl restart apache2
+```
+![Imagen 19](/Practica_2_Trimestre/images/19.png)
