@@ -11,3 +11,4 @@
  Ejercicios | Enlace
   ------------- | ------------- 
  Proyecto 2 | [Proyecto 2](Practica_2_Trimestre/README.md)
+ Ejercicios Docker | [Ejercicios](/Ejercicios_Docker/README.md)
