@@ -9,17 +9,10 @@ docker network create red_guestbook
 ```
 ![Imagen1](/Ejercicios_Docker/images/4/1.png)
 
-Ejecutaremos los contenedores:
-```bash 
-docker run -d --name redis --network red_guestbook -v /opt/redis:/data redis redis-server --appendonly yes
-```
-![Imagen2](/Ejercicios_Docker/images/4/2.png)
-```bash
-docker run -d -p 80:5000 --name guestbook --network red_guestbook iesgn/guestbook
-```
-![Imagen3](/Ejercicios_Docker/images/4/3.png)
-
 Creamos un fichero llamado docker-compose.yml y dentro le pondremos esto:
+```bash
+sudo nano docker-compose.yml
+```
 ```bash
 version: '3.1'
 services:
@@ -34,3 +27,46 @@ services:
     image: redis
     restart: always
 ```
+![Imagen3](/Ejercicios_Docker/images/4/3.png)
+
+Ahora usamos:
+
+```bash
+docker compose up -d
+```
+![Imagen2](/Ejercicios_Docker/images/4/2.png)
+
+![Imagen3](/Ejercicios_Docker/images/4/4.png)
+
+### Ejemplo 2: Despliegue de la aplicación Temperaturas
+
+Creamos un docker-compose.yml:
+
+```bash 
+sudo nano docker-compose.yml
+```
+
+Y escribimos dentro lo siguiente:
+```bash
+version: '3.1'
+services:
+  frontend:
+    container_name: temperaturas-frontend
+    image: iesgn/temperaturas_frontend
+    restart: always
+    ports:
+      - 80:3000
+    depends_on:
+      - backend
+  backend:
+    container_name: temperaturas-backend
+    image: iesgn/temperaturas_backend
+    restart: always
+```
+
+![Imagen5]()
+
+Usamos ```bash docker compose up -d ```:
+
+![Imagen6]()
+
