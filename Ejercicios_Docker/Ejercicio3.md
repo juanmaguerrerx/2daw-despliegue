@@ -30,4 +30,52 @@ docker images
 ```bash
 docker run --name myhello1 hello-world
 ```
-![Imagen5]()
+![Imagen5](/Ejercicios_Docker/images/3/5.png)
+
+### Ejecutar un contenedor hello-world y poner de nombre _myhello2_
+```bash 
+docker run --name myhello2 hello-world
+```
+![Imagen6](/Ejercicios_Docker/images/3/6.png)
+
+### Ejecutar un contenedor hello-world y poner de nombre _myhello3_
+```bash
+docker run --name myhello3 hello-world
+```
+![Imagen7](/Ejercicios_Docker/images/3/7.png)
+
+### Mostrar los contenedores que se están ejecutando
+```bash
+docker ps
+```
+![Imagen8](/Ejercicios_Docker/images/3/8.png)
+
+### Parar el contenedor _myhello1_, _myhello2_ y borrar _myhello1_
+```bash
+docker stop myhello1
+```
+```bash
+docker stop myhello2
+```
+```bash
+docker rm myhello1
+```
+![Imagen9](/Ejercicios_Docker/images/3/9.png)
+
+### Mostrar los contenedores que se están ejecutando 
+```bash
+docker container ls -a
+```
+![Imagen10](/Ejercicios_Docker/images/3/10.png)
+
+### Borrar todos los contenedores
+```bash 
+docker rm $(docker ps -aq)
+```
+![Imagen11](/Ejercicios_Docker/images/3/11.png)
+
+Listamos los contenedores de nuevo:
+```bash
+docker container ls -a
+```
+![Imagen12](/Ejercicios_Docker/images/3/12.png)
