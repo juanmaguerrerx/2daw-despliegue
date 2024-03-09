@@ -64,9 +64,12 @@ services:
     restart: always
 ```
 
-![Imagen5]()
+![Imagen5](/Ejercicios_Docker/images/4/5.png)
 
 Usamos ```bash docker compose up -d ```:
 
-![Imagen6]()
+![Imagen6](/Ejercicios_Docker/images/4/6.png)
+
+![Imagen7](/Ejercicios_Docker/images/4/7.png)
+
 
