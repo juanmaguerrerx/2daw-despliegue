@@ -13,6 +13,24 @@ Ejecutaremos los contenedores:
 ```bash 
 docker run -d --name redis --network red_guestbook -v /opt/redis:/data redis redis-server --appendonly yes
 ```
+![Imagen2](/Ejercicios_Docker/images/4/2.png)
 ```bash
 docker run -d -p 80:5000 --name guestbook --network red_guestbook iesgn/guestbook
+```
+![Imagen3](/Ejercicios_Docker/images/4/3.png)
+
+Creamos un fichero llamado docker-compose.yml y dentro le pondremos esto:
+```bash
+version: '3.1'
+services:
+  app:
+    container_name: guestbook
+    image: iesgn/guestbook
+    restart: always
+    ports:
+      - 80:5000
+  db:
+    container_name: redis
+    image: redis
+    restart: always
 ```
